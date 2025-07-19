@@ -1,0 +1,4 @@
+name: ppss
+depend: cubical standard-library
+flags:
+  --warning=noUnsupportedIndexedMatch
