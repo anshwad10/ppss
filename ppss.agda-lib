@@ -3,3 +3,5 @@ include: .
 depend: cubical standard-library
 flags:
   --warning=noUnsupportedIndexedMatch
+  --no-keep-pattern-variables
+  --hidden-argument-puns

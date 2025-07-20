@@ -1,7 +1,7 @@
 {-# OPTIONS --prop #-}
 
 module SProp where
-open import Level
+open import Level using (Level; 0ℓ; _⊔_)
 open import Relation.Binary.PropositionalEquality
 open import Relation.Nullary.Irrelevant
 
@@ -15,8 +15,14 @@ record ⊤ : Prop where
 
 data ⊥ : Prop where
 
+infix 30 ¬_
+
 ¬_ : Prop ℓ → Prop ℓ
 ¬ P = P → ⊥
+
+data _∨_ (P : Prop ℓ) (Q : Prop ℓ') : Prop (ℓ ⊔ ℓ') where
+  inl : P → P ∨ Q
+  inr : Q → P ∨ Q
 
 data Squash (X : Set ℓ) : Prop ℓ where
   squash : X → Squash X
@@ -62,3 +68,23 @@ postulate ¬¬elim : ¬ ¬ P → P
 
 -- Postulating ¬¬elim doesn't break computation because P is definitionally proof-irrelevant
 
+
+mirabilis : ((P → ⊥) → P) → P
+mirabilis f = ¬¬elim λ ¬p → ¬p (f ¬p)
+
+lem : P ∨ ¬ P
+lem = mirabilis λ f → inr λ p → f (inl p)
+
+caseLEM : (P : Prop ℓ) → (P → Q) → (¬ P → Q) → Q
+caseLEM P f g with lem {P = P}
+... | inl x = f x
+... | inr x = {!!}
+
+exfalso : ⊥ → P
+exfalso ()
+
+pierce : (Q : Prop ℓ) → ((P → Q) → P) → P
+pierce Q f = mirabilis λ ¬p → f λ p → exfalso (¬p p)
+
+gdp : (P → Q) ∨ (Q → P)
+gdp {P} {Q} = {!!}
