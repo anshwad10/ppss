@@ -1,0 +1,12 @@
+{-# OPTIONS --cubical --safe #-}
+
+open import Cubical.Foundations.Prelude
+open import Cubical.Foundations.Function
+open import Cubical.Foundations.HLevels
+open import Cubical.Foundations.Equiv
+open import Cubical.HITs.Susp.Base
+open import Cubical.HITs.Bouquet.Base
+open import Cubical.Relation.Nullary
+
+module SuspDiscrete {ℓ} (A : Type ℓ) (discA : Discrete A) where
+

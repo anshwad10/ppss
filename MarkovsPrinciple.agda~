@@ -1,0 +1,27 @@
+{-# OPTIONS --cubical #-}
+
+module MarkovsPrinciple where
+
+open import Cubical.Foundations.Prelude
+open import Cubical.Foundations.Path
+open import Cubical.Foundations.Function
+open import Cubical.Data.Bool
+open import Cubical.Data.Nat
+open import Cubical.Relation.Nullary
+
+{-# TERMINATING #-}
+markov : (f : ℕ → Bool) → .(¬ (∀ x → f x ≡ false)) → Σ[ n ∈ ℕ ] f n ≡ true
+markov f f≢cf = {!!}
+
+-- private
+--   test1 : ℕ → Bool
+--   test1 0 = false
+--   test1 1 = false
+--   test1 2 = true
+--   test1 _ = false
+
+--   test1≢constfalse : ¬ (test1 ≡ λ _ → false)
+--   test1≢constfalse p = true≢false (funExt⁻ p 2)
+
+--   _ : markov test1 test1≢constfalse ≡ (2 , refl)
+--   _ = {!!}
