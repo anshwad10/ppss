@@ -107,12 +107,12 @@ TypeCat ℓ .Category.⋆IdL f = refl
 TypeCat ℓ .Category.⋆IdR f = refl
 TypeCat ℓ .Category.⋆Assoc f g h = refl
 
--- Type∞Cat : ∀ ℓ → ∞-Category (TypeCat ℓ)
--- Type∞Cat ℓ .∞-Category.Cat⁑ = {!!}
--- Type∞Cat ℓ .∞-Category._⋆⋆_ = {!!}
--- Type∞Cat ℓ .∞-Category.⋆⋆IdL = {!!}
--- Type∞Cat ℓ .∞-Category.⋆⋆IdR = {!!}
--- Type∞Cat ℓ .∞-Category.⋆⋆Assoc = {!!}
--- Type∞Cat ℓ .∞-Category.interchange = {!!}
--- Type∞Cat ℓ .∞-Category.ΣCoInd = {!!}
--- Type∞Cat ℓ .∞-Category.⁑CoInd = {!!}
+Type∞Cat : ∀ ℓ → ∞-Category (TypeCat ℓ)
+Type∞Cat ℓ .∞-Category.Cat⁑ X Y = PathCat (X → Y)
+Type∞Cat ℓ .∞-Category._⋆⋆_ p q = cong₂ (TypeCat ℓ .Category._⋆_) p q
+Type∞Cat ℓ .∞-Category.⋆⋆IdL p = refl
+Type∞Cat ℓ .∞-Category.⋆⋆IdR p = refl
+Type∞Cat ℓ .∞-Category.⋆⋆Assoc p q r = refl
+Type∞Cat ℓ .∞-Category.interchange δ β γ α = {!!}
+Type∞Cat ℓ .∞-Category.ΣCoInd = {!!}
+Type∞Cat ℓ .∞-Category.⁑CoInd X Y = Path∞Cat (X → Y)
