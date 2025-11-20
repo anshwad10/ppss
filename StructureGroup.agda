@@ -1,4 +1,4 @@
-{-# OPTIONS --cubical #-}
+{-# OPTIONS --cubical --guardedness #-}
 
 {-- Defining the structure group of a heap so I can prove J wrong --}
 
